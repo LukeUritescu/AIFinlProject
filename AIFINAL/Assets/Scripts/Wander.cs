@@ -30,8 +30,7 @@ public class Wander : MonoBehaviour
         tarPos = new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void WanderAround()
     {
         if (Vector3.Distance(tarPos, transform.position) <= 5.0f)
             GetNextPosition();
@@ -39,5 +38,19 @@ public class Wander : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, rotSpeed * Time.deltaTime);
         transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+        //if (Vector3.Distance(tarPos, transform.position) <= 5.0f)
+        //    GetNextPosition();
+        //Quaternion tarRot = Quaternion.LookRotation(tarPos - transform.position);
+
+        //transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, rotSpeed * Time.deltaTime);
+        //transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
     }
 }

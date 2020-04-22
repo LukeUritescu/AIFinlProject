@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\GroundPred.cs" />
     <Compile Include="Assets\Scripts\Prey.cs" />
     <Compile Include="Assets\Scripts\PreyFSM.cs" />
+    <Compile Include="Assets\Scripts\PreyHome.cs" />
     <Compile Include="Assets\Scripts\Senses\Aspect.cs" />
     <Compile Include="Assets\Scripts\Senses\Sense.cs" />
     <Compile Include="Assets\Scripts\Senses\Sight.cs" />

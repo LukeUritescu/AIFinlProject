@@ -6,7 +6,7 @@ public class Aspect : MonoBehaviour
 {
    public enum aspect
     {
-        Prey, Food
+        Prey, Food, GroundPred
     }
 
     public aspect aspectName;
