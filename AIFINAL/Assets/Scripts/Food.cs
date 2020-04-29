@@ -10,7 +10,7 @@ public class Food : MonoBehaviour
     {
         if (other.transform.tag == "Prey")
         {
-            if (other.gameObject.GetComponent<Prey>().CurState == Prey.PreyStates.FoundFood)
+            if (other.gameObject.GetComponent<PreySprite>().CurState == PreyStates.FoundFood)
             {
                 FoodTaken();
             }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3659861967617878668}
   m_Layer: 0
   m_Name: ColliderTrail
-  m_TagString: Untagged
+  m_TagString: Trail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,5 +42,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 2, z: 2}
+  m_Size: {x: 9, y: 5, z: 8}
   m_Center: {x: 0, y: 0, z: 0}

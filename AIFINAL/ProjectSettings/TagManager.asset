@@ -7,6 +7,7 @@ TagManager:
   - Food
   - Prey
   - GroundPred
+  - Trail
   layers:
   - Default
   - TransparentFX

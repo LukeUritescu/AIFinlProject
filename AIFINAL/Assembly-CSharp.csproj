@@ -66,9 +66,14 @@
     <Compile Include="Assets\Scripts\FlyingPred.cs" />
     <Compile Include="Assets\Scripts\Food.cs" />
     <Compile Include="Assets\Scripts\GroundPred.cs" />
+    <Compile Include="Assets\Scripts\HiveMind.cs" />
+    <Compile Include="Assets\Scripts\IObserver.cs" />
+    <Compile Include="Assets\Scripts\ISubject.cs" />
     <Compile Include="Assets\Scripts\Prey.cs" />
     <Compile Include="Assets\Scripts\PreyFSM.cs" />
     <Compile Include="Assets\Scripts\PreyHome.cs" />
+    <Compile Include="Assets\Scripts\PreySprite.cs" />
+    <Compile Include="Assets\Scripts\Queen.cs" />
     <Compile Include="Assets\Scripts\Senses\Aspect.cs" />
     <Compile Include="Assets\Scripts\Senses\Sense.cs" />
     <Compile Include="Assets\Scripts\Senses\Sight.cs" />
@@ -80,6 +85,7 @@
     <Compile Include="Assets\Scripts\TargetFood.cs" />
     <Compile Include="Assets\Scripts\UnityFlock\UnityFlocking.cs" />
     <Compile Include="Assets\Scripts\UnityFlock\UnityFlockingController.cs" />
+    <Compile Include="Assets\Scripts\UnityPrey.cs" />
     <Compile Include="Assets\Scripts\Wander.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Workspace/AIProg/AIFinlProject/AIFINAL/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

@@ -62,7 +62,7 @@ public class Sight : Sense
             if (obj.activeSelf)
             {
                 DetectAspect(obj.transform);
-                Debug.DrawLine(transform.position, obj.transform.position, Color.blue);
+                //Debug.DrawLine(transform.position, obj.transform.position, Color.blue);
             }
             else if(obj.activeSelf == false)
             {

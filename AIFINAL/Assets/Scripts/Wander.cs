@@ -6,7 +6,7 @@ public class Wander : MonoBehaviour
 {
     private Vector3 tarPos;
 
-    private float movementSpeed = 5.0f;
+    private float movementSpeed = 14.0f;
     private float rotSpeed = 2.0f;
     private float minX, maxX, minZ, maxZ;
 

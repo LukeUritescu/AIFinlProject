@@ -15,7 +15,7 @@ public class SimpleFSM : FSM
     private bool bDead;
     private int health;
 
-    new private Rigidbody rigidBody;
+    private Rigidbody rigidBody;
 
     protected override void Initialize()
     {
