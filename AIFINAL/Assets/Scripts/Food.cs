@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    public enum HarvestState { HarvestFood, HarvestRemains, HarvestSeeds}
-
-    public HarvestState harvestState;
+    public bool IsHarvestable;
     [SerializeField]
     private int foodAmount = 2;
-    public int FoodAmount { get; set; }
+    public int FoodAmount
+    {
+        get
+        {
+            return this.foodAmount;
+        }
+        set
+        {
+            if(this.foodAmount == value)
+            {
+                this.foodAmount = value;
+            }
+        }
+    }
     //private void OnTriggerEnter(Collider other)
     //{
     //    if (other.transform.tag == "Prey")
@@ -28,30 +39,16 @@ public class Food : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        harvestState = HarvestState.HarvestFood;
+        FoodAmount = 4;
+        IsHarvestable = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (harvestState)
+        if(FoodAmount <= 0)
         {
-            case HarvestState.HarvestFood:
-            if(this.foodAmount <= 0)
-            {
-                harvestState = HarvestState.HarvestRemains;
-                    this.foodAmount = 1;
-            }
-                break;
-            case HarvestState.HarvestRemains:
-                if (this.foodAmount <= 0)
-                {
-                    harvestState = HarvestState.HarvestSeeds;
-                    this.foodAmount = 1;
-                }
-                break;
-            case HarvestState.HarvestSeeds:
-                break;
+            this.gameObject.SetActive(false);
         }
     }
 }

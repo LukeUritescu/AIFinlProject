@@ -79,8 +79,7 @@ public class UnityFlocking : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Flocking()
     {
         float speed = velocity.magnitude;
         Vector3 avgVelocity = Vector3.zero;
@@ -93,10 +92,10 @@ public class UnityFlocking : MonoBehaviour
         Vector3 toAvg;
         Vector3 wantedVel;
 
-        for(int i = 0; i <objects.Length; i++)
+        for (int i = 0; i < objects.Length; i++)
         {
             Transform transform = objects[i];
-            if(transform != transformComponent)
+            if (transform != transformComponent)
             {
                 Vector3 otherPosition = transform.position;
 
@@ -106,7 +105,7 @@ public class UnityFlocking : MonoBehaviour
                 forceV = myPosition - otherPosition;
                 d = forceV.magnitude;
 
-                if(d < followRadius)
+                if (d < followRadius)
                 {
                     if (d < avoidanceRadius)
                     {
@@ -125,7 +124,7 @@ public class UnityFlocking : MonoBehaviour
             }
         }
 
-        if(count > 0)
+        if (count > 0)
         {
             avgVelocity /= count;
 
@@ -138,11 +137,11 @@ public class UnityFlocking : MonoBehaviour
 
         forceV = origin.position - myPosition;
         d = forceV.magnitude;
-        f = d /toOriginRange;
+        f = d / toOriginRange;
 
         if (d > 0)
             originPush = (forceV / d) * f * toOriginForce;
-        if(speed < minSpeed && speed > 0)
+        if (speed < minSpeed && speed > 0)
         {
             velocity = (velocity / speed) * minSpeed;
         }
@@ -162,6 +161,13 @@ public class UnityFlocking : MonoBehaviour
 
         transformComponent.Translate(velocity * Time.deltaTime, Space.World);
 
-        normalizedVelocity = velocity.normalized; 
+        normalizedVelocity = velocity.normalized;
     }
+// Update is called once per frame
+void Update()
+{
 }
+}
+
+
+

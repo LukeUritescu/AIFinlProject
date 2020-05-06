@@ -19,6 +19,7 @@ public class FlyingPred : MonoBehaviour
         switch (State)
         {
             case FlyingState.Flying:
+                this.GetComponent<UnityFlocking>().Flocking();
                 break;
             case FlyingState.FoundSeeds:
                 break;

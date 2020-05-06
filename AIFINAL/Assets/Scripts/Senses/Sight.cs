@@ -15,6 +15,8 @@ public class Sight : Sense
     private List<GameObject> objectsToSearch;
     private Transform targetToFollow;
 
+    public GameObject objectGather;
+
     public Transform TargetToFollow
     {
         get { return this.targetToFollow; }
@@ -62,7 +64,7 @@ public class Sight : Sense
             if (obj.gameObject.activeSelf)
             {
                 DetectAspect(obj.transform);
-                //Debug.DrawLine(transform.position, obj.transform.position, Color.blue);
+                Debug.DrawLine(transform.position, obj.transform.position, Color.blue);
             }
             else
             {
@@ -81,7 +83,7 @@ public class Sight : Sense
         //Check the angle between the AI characters forward vector and the dirrection vector between pllayer and AI
         if ((Vector3.Angle(rayDirection, transform.forward)) < FieldOfView)
         {
-            //Detect if player is withhin the field of view
+            //Detect if object is withhin the field of view
             if (Physics.Raycast(transform.position, rayDirection, out hit, ViewDistance))
             {
                 Aspect aspect = hit.collider.GetComponent<Aspect>();
@@ -90,8 +92,18 @@ public class Sight : Sense
                     //Check the aspect
                     if (aspect.aspectName == aspectName)
                     {
+                        if(aspect.aspectName == Aspect.aspect.Food)
+                        {
+                            if(hit.collider.gameObject.GetComponent<Food>().IsHarvestable)
+                            {
+                                objectGather = hit.collider.gameObject;
+                            }
+                            else
+                            {
+                                TargetToFollow = null;
+                            }
+                        }
                         //print(aspectName.ToString());
-                        TargetToFollow = targetTransform;
                     }
                 }
             }
