@@ -6,7 +6,7 @@ public class Wander : MonoBehaviour
 {
     private Vector3 tarPos;
 
-    private float movementSpeed = 14.0f;
+    public float MovementSpeed = 14.0f;
     private float rotSpeed = 2.0f;
     private float minX, maxX, minZ, maxZ;
 
@@ -21,7 +21,7 @@ public class Wander : MonoBehaviour
         minZ = -45.0f;
         maxZ = 45.0f;
 
-        GetNextPosition();
+        //GetNextPosition();
     }
 
 
@@ -37,7 +37,7 @@ public class Wander : MonoBehaviour
         Quaternion tarRot = Quaternion.LookRotation(tarPos - transform.position);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, rotSpeed * Time.deltaTime);
-        transform.Translate(new Vector3(0, 0, movementSpeed * Time.deltaTime));
+        transform.Translate(new Vector3(0, 0, MovementSpeed * Time.deltaTime));
     }
 
 

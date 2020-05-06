@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IObserver
 {
-    void ObserverUpdate(System.Object sender, Vector3 message);
+    void ObserverUpdate(System.Object sender, Transform message);
 }

@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3177323806137168230}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26.4, y: 0, z: 24.9}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
@@ -106,5 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f747bf96146474b9f3f0461c78b033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PreyPrefab: {fileID: 200481712379599076, guid: cd605fd8f3e04ac4db03631680b8631a,
-    type: 3}
+  PreyPrefab: {fileID: 0}

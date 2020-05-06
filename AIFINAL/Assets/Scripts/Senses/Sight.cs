@@ -59,12 +59,12 @@ public class Sight : Sense
     {
         foreach(GameObject obj in objectsToSearch.ToList())
         {
-            if (obj.activeSelf)
+            if (obj.gameObject.activeSelf)
             {
                 DetectAspect(obj.transform);
                 //Debug.DrawLine(transform.position, obj.transform.position, Color.blue);
             }
-            else if(obj.activeSelf == false)
+            else
             {
                 this.objectsToSearch.Remove(obj);
                 this.TargetToFollow = null;   

@@ -219,6 +219,7 @@ MonoBehaviour:
   distanceToHearSignal: 100
   _HiveMind: {fileID: 2095189046441794381, guid: b7783cef0bfd0e64eae106d0228f9b14,
     type: 3}
+  queen: {fileID: 2095189046441794378, guid: b7783cef0bfd0e64eae106d0228f9b14, type: 3}
   curState: 0
   HomeLocation: {fileID: 3177323806137168226, guid: 1d9626cf093f25a4e89b22ae91380c62,
     type: 3}

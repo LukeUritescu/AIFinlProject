@@ -4,37 +4,54 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    public enum HarvestState { HarvestFood, HarvestRemains, HarvestSeeds}
+
+    public HarvestState harvestState;
     [SerializeField]
     private int foodAmount = 2;
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Prey")
-        {
-            if (other.gameObject.GetComponent<PreySprite>().CurState == PreyStates.FoundFood)
-            {
-                FoodTaken();
-            }
-        }
-    }
+    public int FoodAmount { get; set; }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.transform.tag == "Prey")
+    //    {
+    //        if (other.gameObject.GetComponent<PreySprite>().CurState == PreyStates.FoundFood)
+    //        {
+    //            FoodTaken();
+    //        }
+    //    }
+    //}
 
-    private void FoodTaken()
+    public void FoodTaken()
     {
         this.foodAmount--;
     }
     // Start is called before the first frame update
     void Start()
     {
-       
+        harvestState = HarvestState.HarvestFood;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(this.foodAmount <= 0)
+        switch (harvestState)
         {
-            //Object.Destroy(this.gameObject);
-            this.gameObject.SetActive(false);
-            this.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            case HarvestState.HarvestFood:
+            if(this.foodAmount <= 0)
+            {
+                harvestState = HarvestState.HarvestRemains;
+                    this.foodAmount = 1;
+            }
+                break;
+            case HarvestState.HarvestRemains:
+                if (this.foodAmount <= 0)
+                {
+                    harvestState = HarvestState.HarvestSeeds;
+                    this.foodAmount = 1;
+                }
+                break;
+            case HarvestState.HarvestSeeds:
+                break;
         }
     }
 }

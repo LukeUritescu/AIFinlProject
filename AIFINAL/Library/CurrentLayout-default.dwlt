@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
-  controlID: 71
+  controlID: 76
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
-  controlID: 76
+  controlID: 77
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 77
+  controlID: 78
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -391,20 +391,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a4dbffff
-      m_LastClickedID: -9308
-      m_ExpandedIDs: 70fbffff
+      m_SelectedIDs: ce330000
+      m_LastClickedID: 13262
+      m_ExpandedIDs: f0faffff4efbffff70fbffffc2330000c8330000ce330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: QueenPrey
-        m_OriginalName: QueenPrey
+        m_Name: Flying Predator
+        m_OriginalName: Flying Predator
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -6188
+        m_UserData: 13258
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -453,9 +453,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 8.796009, y: -8.632156, z: 17.038166}
+    m_Target: {x: 7.3230925, y: 5.277701, z: 0.23669434}
     speed: 2
-    m_Value: {x: 8.796009, y: -8.632156, z: 17.038166}
+    m_Value: {x: 7.3230925, y: 5.277701, z: 0.23669434}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -501,13 +501,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.16360363, y: 0.83220166, z: -0.41782853, w: -0.32584032}
+    m_Target: {x: -0.00084906234, y: 0.98013484, z: -0.19848861, w: -0.0041081873}
     speed: 2
-    m_Value: {x: -0.16359724, y: 0.8321691, z: -0.4178122, w: -0.3258276}
+    m_Value: {x: -0.0008490285, y: 0.9800958, z: -0.19848071, w: -0.004108024}
   m_Size:
-    m_Target: 282.597
+    m_Target: 120.61112
     speed: 2
-    m_Value: 282.597
+    m_Value: 120.61112
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -597,20 +597,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Scripts/Observer
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Scripts/Observer
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Workspace\AIProg\AIFinlProject\AIFINAL
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 92340000
-    m_LastClickedID: 13458
-    m_ExpandedIDs: 00000000883400009234000000ca9a3b
+    m_SelectedIDs: ae340000
+    m_LastClickedID: 13486
+    m_ExpandedIDs: 00000000a2340000a4340000b234000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,7 +638,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000088340000
+    m_ExpandedIDs: 00000000a2340000a4340000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -663,8 +663,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0cfbffff
-    m_LastClickedInstanceID: -1268
+    m_SelectedInstanceIDs: da330000
+    m_LastClickedInstanceID: 13274
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000fe3a00003a3c00001a0200003a490000643d0000fc330000
     m_RenameOverlay:
