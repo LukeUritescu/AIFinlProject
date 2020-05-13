@@ -7,7 +7,7 @@ public class Wander : MonoBehaviour
     private Vector3 tarPos;
 
     public float MovementSpeed = 14.0f;
-    private float rotSpeed = 2.0f;
+    private float rotSpeed = 7.0f;
     private float minX, maxX, minZ, maxZ;
 
 
@@ -15,11 +15,11 @@ public class Wander : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minX = -45.0f;
-        maxX = 45.0f;
+        minX = -125.0f;
+        maxX = 125.0f;
 
-        minZ = -45.0f;
-        maxZ = 45.0f;
+        minZ = -125.0f;
+        maxZ = 125.0f;
 
         //GetNextPosition();
     }
@@ -27,7 +27,7 @@ public class Wander : MonoBehaviour
 
     void GetNextPosition()
     {
-        tarPos = new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
+        tarPos = new Vector3(Random.Range(minX, maxX), 2f, Random.Range(minZ, maxZ));
     }
 
     public void WanderAround()
@@ -35,7 +35,7 @@ public class Wander : MonoBehaviour
         if (Vector3.Distance(tarPos, transform.position) <= 5.0f)
             GetNextPosition();
         Quaternion tarRot = Quaternion.LookRotation(tarPos - transform.position);
-
+        tarRot.eulerAngles = new Vector3(0, tarRot.eulerAngles.y, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, rotSpeed * Time.deltaTime);
         transform.Translate(new Vector3(0, 0, MovementSpeed * Time.deltaTime));
     }

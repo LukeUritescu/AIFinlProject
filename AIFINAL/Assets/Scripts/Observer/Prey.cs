@@ -24,10 +24,10 @@ public class Prey : IObserver
         }
     }
 
-    public Prey(HiveMind hm)
+    public Prey(GroundPredSubject sub)
     {
         this.state = PreyStates.FindFood;
-        hm.Attach(this);
+        sub.Attach(this);
     }
 
     public Prey()
@@ -35,25 +35,28 @@ public class Prey : IObserver
         this.state = PreyStates.FindFood;
     }
 
-    public void Attach(HiveMind hm)
+    public void Attach(GroundPredSubject sub)
     {
-        hm.Attach(this);
+        sub.Attach(this);
     }
 
-    public void Detach(HiveMind hm)
+    public void Detach(GroundPredSubject sub)
     {
-        hm.Detach(this);
+        sub.Detach(this);
     }
 
-    public void ObserverUpdate(object sender, Transform message)
+    public void ObserverUpdate(object sender, object message)
     {
-        if (sender is HiveMind)
+        if (sender is GroundPredSubject)
         {
-            //If this prey has NOT found food yet then this will help them find it if they are within range
-           if(this.State == PreyStates.FindFood)
+           if(message is string)
             {
-                this.State = PreyStates.FollowTrail;
-                this.FoodMessage = message;
+                switch (message.ToString())
+                {
+                    case "Attack":
+                        this.State = PreyStates.Flee;
+                        break;
+                }
             }
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class VehicleFollow : MonoBehaviour
 {
     public Path path;
-    public float Speed = 20.0f;
+    public float Speed = 60.0f;
     public float mass = 5.0f;
     public bool isLooping = true;
 
@@ -56,8 +56,13 @@ public class VehicleFollow : MonoBehaviour
         else
             velocity += Steer(targetPoint);
 
-        transform.position += velocity;
+        Vector3 dirRot = targetPoint - transform.position;
+        Quaternion tarRotation = Quaternion.LookRotation(dirRot);
+        tarRotation.eulerAngles = new Vector3(0, tarRotation.eulerAngles.y, 0);
+
+
         transform.rotation = Quaternion.LookRotation(velocity);
+        transform.position += velocity;
     }
 
     public Vector3 Steer(Vector3 target, bool bFinalPoint = false)

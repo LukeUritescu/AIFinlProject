@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
@@ -15,8 +16,8 @@ using UnityEngine;
 
 public class PreySprite : MonoBehaviour
 {
-    public List<GameObject> ListOfFoodAvailable;
-
+    
+    public GameObject FoodLocation;
     [SerializeField]
     private int hp;
     public int HP
@@ -38,10 +39,8 @@ public class PreySprite : MonoBehaviour
     [SerializeField]
     private float distanceToHearSignal = 2000f;
 
-    [SerializeField]
-    public GameObject _HiveMind;
-    
-    public Queen queen;
+    public GameObject GroundPredator;
+    private GroundPred groundP;
 
     private Prey prey;
 
@@ -65,7 +64,7 @@ public class PreySprite : MonoBehaviour
     //new private Rigidbody rigidBody;
 
     private bool hasFood;
-    private Transform LocationForFood;
+
     // Start is called before the first frame update
 
     private void Awake()
@@ -81,33 +80,25 @@ public class PreySprite : MonoBehaviour
         this.HP--;
     }
 
-    public void FleeFromPredator()
-    {
-        this.CurState = PreyStates.FindFood;
-    }
 
     void Start()
     {
-        ListOfFoodAvailable = new List<GameObject>();
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag("Food"))
-        {
-            this.ListOfFoodAvailable.Add(obj);
-        }
         this.SetUpPrey();
     }
 
     public void SetUpPrey()
     {
-        this.queen = _HiveMind.GetComponentInParent<Queen>();
+        groundP = GroundPredator.GetComponent<GroundPred>();
+
+        this.prey.Attach(groundP.GroundPredSub);
         hasFood = false;
         this.curState = this.prey.State;
-        if(this.queen.Hive != null)
-        this.prey.Attach(queen.Hive);
+
     }
 
-    public void DetachFromHiveMind()
+    public void DetachFromGroundPred()
     {
-        this.prey.Detach(this.queen.Hive);
+        this.prey.Detach((this.groundP.GroundPredSub));
     }
 
     // Update is called once per frame
@@ -119,20 +110,24 @@ public class PreySprite : MonoBehaviour
             //The Prey should be searching for food, if it has seen food it should then switch to FoundFood State
             case PreyStates.FindFood:
                 Wandering();
-                //if (this.GetComponentInChildren<Sight>().objectGather.activeSelf && LocationForFood == null)
-                //{
-                //    this.curState = PreyStates.FoundFood;
-                //    LocationForFood = this.GetComponentInChildren<Sight>().objectGather.transform;
-                //}
+                if (this.GetComponentInChildren<Sight>().DetectAspect() && this.FoodLocation.GetComponent<Food>().IsHarvestable)
+                {
+                    this.CurState = PreyStates.FoundFood;
+                    //Debug.Log("found food");
+                }
+                else
+                {
+                    this.CurState = PreyStates.FindFood;
+                }
                 break;
-                
-            //case PreyStates.FollowTrail:
-            //    GoToFoodSignal(this.prey.FoodMessage);
-            //    break;
-            //    //This means when the prey ahs found food it will
-            //case PreyStates.FoundFood:
-            //    FoundFood();
-            //    break;
+
+            case PreyStates.FollowTrail:
+                GoToFoodSignal(this.prey.FoodMessage);
+                break;
+            //This means when the prey ahs found food it will
+            case PreyStates.FoundFood:
+                FoundFood();
+                break;
             case PreyStates.ReturnHome:
                 ReturnHome();
                 break;
@@ -144,6 +139,7 @@ public class PreySprite : MonoBehaviour
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
                 break;
         }
+        this.transform.position = new Vector3(this.transform.position.x, 2, this.transform.position.z);
         if(this.HP <= 0)
         {
             this.curState = PreyStates.Dead;
@@ -154,6 +150,10 @@ public class PreySprite : MonoBehaviour
         //    this.CurState = this.prey.State;
         //}
     }
+    public void FleeFromPredator()
+    {
+        this.CurState = PreyStates.FindFood;
+    }
 
     public void Wandering()
     {
@@ -162,42 +162,38 @@ public class PreySprite : MonoBehaviour
 
     public void FoundFood()
     {
-            if (Vector3.Distance(LocationForFood.position, transform.position) <= 3.5f)
+            if (Vector3.Distance(FoodLocation.transform.position, transform.position) <= 4.5f)
             {
-                this.curState = PreyStates.FindFood;              
+                this.curState = PreyStates.ReturnHome;             
             }
         
-        Quaternion tarRot = Quaternion.LookRotation(LocationForFood.position - this.transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, 5.0f * Time.deltaTime);
-        transform.Translate(new Vector3(0, 0, 20.0f * Time.deltaTime));
-        
+        Quaternion tarRot = Quaternion.LookRotation(FoodLocation.transform.position - this.transform.position);
+        tarRot.eulerAngles = new Vector3(0, tarRot.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, 10.0f * Time.deltaTime);
+        transform.Translate(new Vector3(0, 0, 40.0f * Time.deltaTime));
         
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (this.curState == PreyStates.FoundFood)
-    //    {
-    //        if(other.gameObject.tag == "Food")
-    //        {
-
-    //            if (other.gameObject.GetComponent<Food>().IsHarvestable != false)
-    //            {
-    //                this.curState = PreyStates.FindFood;
-    //                //this.LocationForFood = null;
-    //            }
-    //            if (other.gameObject.GetComponent<Food>().IsHarvestable)
-    //            {
-    //                Debug.Log("FoundFood");
-    //                this.queen.Hive.Notify(LocationForFood);
-    //                this.curState = PreyStates.ReturnHome;
-    //                hasFood = true;
-    //                other.gameObject.GetComponent<Food>().FoodTaken();                
-                    
-    //            }
-    //        }
-    //    }
-    //}
+    private void OnTriggerEnter(Collider other)
+    {
+        if (this.curState == PreyStates.FoundFood)
+        {
+            if (other.gameObject.tag == "Food")
+            {
+                if (other.gameObject.GetComponent<Food>().IsHarvestable && this.hasFood == false)
+                {
+                    other.gameObject.GetComponent<Food>().FoodTaken();
+                    this.hasFood = true;
+                    //Debug.Log("has food");
+                }
+                else
+                {
+                    this.hasFood = false;
+                    this.CurState = PreyStates.FindFood;
+                }
+            }
+        }
+    }
 
     ////This should acknowledge the food has been found so the Hivemind works and all the other prey are notified
     //public void EmitFoodLocation()
@@ -210,7 +206,6 @@ public class PreySprite : MonoBehaviour
         if (Vector3.Distance(location.position, this.transform.position) <= distanceToHearSignal)
         {
             this.curState = PreyStates.FoundFood;
-            LocationForFood = location;
         }
     }
 
@@ -218,19 +213,18 @@ public class PreySprite : MonoBehaviour
     {
         if(Vector3.Distance(HomeLocation.position, transform.position) <= 4.5f)
         {
-            if (LocationForFood != null)
+            if (FoodLocation.gameObject.GetComponent<Food>().IsHarvestable)
                 this.curState = PreyStates.FoundFood;
             else
             {
                 this.curState = PreyStates.FindFood;
             }
             this.hasFood = false;
-            Debug.Log(this.curState);
-            Debug.Log(LocationForFood);
         }
         Quaternion tarRot = Quaternion.LookRotation(HomeLocation.position - this.transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, 2.0f * Time.deltaTime);
-        transform.Translate(new Vector3(0, 0, 14.0f * Time.deltaTime));
+        tarRot.eulerAngles = new Vector3(0, tarRot.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, tarRot, 10.0f * Time.deltaTime);
+        transform.Translate(new Vector3(0, 0, 40.0f * Time.deltaTime));
     }
 
    

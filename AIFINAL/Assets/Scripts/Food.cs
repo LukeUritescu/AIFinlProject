@@ -6,7 +6,9 @@ public class Food : MonoBehaviour
 {
     public bool IsHarvestable;
     [SerializeField]
-    private int foodAmount = 2;
+    private int maxFoodAmount= 4;
+    [SerializeField]
+    private int foodAmount;
     public int FoodAmount
     {
         get
@@ -15,7 +17,7 @@ public class Food : MonoBehaviour
         }
         set
         {
-            if(this.foodAmount == value)
+            if(this.foodAmount != value)
             {
                 this.foodAmount = value;
             }
@@ -34,13 +36,19 @@ public class Food : MonoBehaviour
 
     public void FoodTaken()
     {
-        this.foodAmount--;
+        this.FoodAmount--;
     }
     // Start is called before the first frame update
     void Start()
     {
-        FoodAmount = 4;
+        FoodAmount = maxFoodAmount;
         IsHarvestable = true;
+    }
+
+    public void FoodRestored()
+    {
+        this.FoodAmount = maxFoodAmount;
+        this.IsHarvestable = true;
     }
 
     // Update is called once per frame
@@ -48,7 +56,7 @@ public class Food : MonoBehaviour
     {
         if(FoodAmount <= 0)
         {
-            this.gameObject.SetActive(false);
+            this.IsHarvestable = false;
         }
     }
 }

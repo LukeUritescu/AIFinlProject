@@ -60,11 +60,9 @@ MonoBehaviour:
   bDebug: 1
   aspectName: 1
   detectionRate: 1
-  FieldOfView: 60
-  ViewDistance: 20
-  aspectNameArray:
-  - Food
-  - GroundPred
+  FieldOfView: 20
+  ViewDistance: 50
+  Target: Food
 --- !u!1 &200481712379599076
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 200481712379599076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 1825106726}
   m_Father: {fileID: 0}
@@ -129,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 956f8295aae11a84fb26aaae387d3e8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -191,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe04dff603a36004481770b1f6ac3333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementSpeed: 40
 --- !u!114 &1469642051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,10 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2a54cfcd44950479eb69d5c58d6768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToHearSignal: 100
-  _HiveMind: {fileID: 2095189046441794381, guid: b7783cef0bfd0e64eae106d0228f9b14,
-    type: 3}
-  queen: {fileID: 2095189046441794378, guid: b7783cef0bfd0e64eae106d0228f9b14, type: 3}
+  FoodLocation: {fileID: 0}
+  hp: 2
+  distanceToHearSignal: 1000
+  GroundPredator: {fileID: 0}
   curState: 0
-  HomeLocation: {fileID: 3177323806137168226, guid: 1d9626cf093f25a4e89b22ae91380c62,
-    type: 3}
+  HomeLocation: {fileID: 0}

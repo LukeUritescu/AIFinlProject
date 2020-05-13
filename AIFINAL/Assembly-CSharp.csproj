@@ -68,11 +68,11 @@
     <Compile Include="Assets\Scripts\GroundPred.cs" />
     <Compile Include="Assets\Scripts\IObserver.cs" />
     <Compile Include="Assets\Scripts\ISubject.cs" />
-    <Compile Include="Assets\Scripts\Observer\HiveMind.cs" />
+    <Compile Include="Assets\Scripts\Observer\FlyingPredObserver.cs" />
+    <Compile Include="Assets\Scripts\Observer\GroundPredSubject.cs" />
     <Compile Include="Assets\Scripts\Observer\Prey.cs" />
     <Compile Include="Assets\Scripts\Observer\PreySprite.cs" />
-    <Compile Include="Assets\Scripts\Observer\Queen.cs" />
-    <Compile Include="Assets\Scripts\Observer\UnityPrey.cs" />
+    <Compile Include="Assets\Scripts\Observer\UnityGroundPredator.cs" />
     <Compile Include="Assets\Scripts\PreyFSM.cs" />
     <Compile Include="Assets\Scripts\PreyHome.cs" />
     <Compile Include="Assets\Scripts\Senses\Aspect.cs" />

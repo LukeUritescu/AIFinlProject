@@ -32,11 +32,10 @@ public class PreyHome : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.foodStorage == 7)
+        if(this.foodStorage == 2)
         {
            GameObject newPrey = Instantiate(PreyPrefab, this.transform.position, this.transform.rotation);
             this.foodStorage = 0;
-            newPrey.GetComponent<PreySprite>().queen = newPrey.GetComponent<PreySprite>()._HiveMind.GetComponent<Queen>();
         }
     }
 }
